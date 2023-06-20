@@ -14,15 +14,13 @@
 
 void main()
 {
-    int32 currentRPM;
     initLedSegData();
     initTimer0();
     initTimer1();
     TR1 = 1;
     while (1)
     {
-        if((currentRPM = sampleRPM()) >= 0){
-            ledDisplayUint(currentRPM, 0, 3);
-        }
+        sampleRPM();
+        ledDisplayUint(getRPM(), 0, 3);
     }
 }
