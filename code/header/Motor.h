@@ -2,10 +2,12 @@
 #define _Motor_h
 #include "CustomType.h"
 
-#define pulsesPerRevolution 24
+#define pulsesPerRevolution 360
 #define currentPulsesH TH1
 #define currentPulsesL TL1
-#define getSpeedPeriod_ms 100
+#define getSpeedPeriod_ms 200
+//gain_pulsesToRPM = 60000 / pulsesPerRevolution / getSpeedPeriod_ms
+#define gain_pulsesToRPM 5/6 //
 
 int32 getSpeed();
 

@@ -15,15 +15,15 @@ void main()
 {
     uint32 num_ms = 0;
     uint8 index = 0;
-    int32 currentSpeed;
+    int32 currentRPM;
     initLedSegData();
     initTimer0();
     initTimer1();
     TR1 = 1;
     while (1)
     {
-        if(currentSpeed =getSpeed() >= 0){
-            ledDisplayUint(currentSpeed, 0, 8);
+        if((currentRPM = getSpeed()) >= 0){
+            ledDisplayUint(currentRPM, 0, 4);
         }
     }
 }
