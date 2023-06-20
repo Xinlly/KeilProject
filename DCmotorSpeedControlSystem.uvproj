@@ -411,6 +411,11 @@
               <FileType>1</FileType>
               <FilePath>.\code\source\Motor.c</FilePath>
             </File>
+            <File>
+              <FileName>Pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\Pid.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -819,6 +824,11 @@
               <FileName>Motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\Motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\Pid.c</FilePath>
             </File>
           </Files>
         </Group>

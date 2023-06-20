@@ -3,7 +3,7 @@
 #include "CustomType.h"
 #include "REG52.H"
 static float64 currentRPM;
-void sampleRPM()
+int8 sampleRPM()
 {
     static uint32 timeMark_ms;
     static int32 currentPulses;
@@ -15,7 +15,9 @@ void sampleRPM()
         currentPulsesH = 0x00;
         currentPulsesL = 0x00;
         TF1 = 0;
+        return 0;
     }
+    return -1;
 }
 float64 getRPM()
 {
