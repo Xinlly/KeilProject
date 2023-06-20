@@ -14,9 +14,9 @@ extern bit flag_inter;
 
 void initTimer0();
 void initTimer1();
-uint32 getSysPeriod();
-uint32 getSysTimeUs();
-uint32 getSysTimeMs();
-uint32 getSysTimeS();
+uint32 getSysCycleNum();
+uint32 getSysTime_us();
+uint32 getSysTime_ms();
+uint32 getSysTime_s();
 
 #endif

@@ -3,14 +3,13 @@
 #include "Led.h"
 #include "Timer.h"
 uint32 currentSysTime_us = 0;
-uint32 currentSysPeriod = 0;
-uint32 taskPlan_timeMarkMs;
+uint32 currentSysCycleNum = 0;
 bit flag_inter = 0;
 void interruptTimer0() interrupt 1
 {
 	TL0 = sysTimer_initValue_L;
 	TH0 = sysTimer_initValue_H;
-	currentSysPeriod += 1;
+	currentSysCycleNum += 1;
 	currentSysTime_us += sysTimer_Cycle;
 	ledDisplayTask();
 }
@@ -32,19 +31,19 @@ void initTimer1() // 500us@11.0592MHz
 	TF1 = 0;
 	T1 = 0xFF;
 }
-uint32 getSysPeriod()
+uint32 getSysCycleNum()
 {
-	return currentSysPeriod;
+	return currentSysCycleNum;
 }
-uint32 getSysTimeUs()
+uint32 getSysTime_us()
 {
 	return currentSysTime_us;
 }
-uint32 getSysTimeMs()
+uint32 getSysTime_ms()
 {
 	return currentSysTime_us / 1000;
 }
-uint32 getSysTimeS()
+uint32 getSysTime_s()
 {
 	return currentSysTime_us / 1000000;
 }

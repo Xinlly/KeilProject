@@ -15,9 +15,9 @@ int32 getSpeed()
 {
     static uint32 timeMark_ms;
     int32 currentRPM;
-    if (getSysTimeMs() - timeMark_ms >= getSpeedPeriod_ms)
+    if (getSysTime_ms() - timeMark_ms >= pulseSamplesCycle_ms)
     {
-        timeMark_ms = getSysTimeMs();
+        timeMark_ms = getSysTime_ms();
         currentRPM = calculateSpeed();
         currentPulsesH = 0x00;
         currentPulsesL = 0x00;
