@@ -1,5 +1,7 @@
 .vscode/
 Listings/
 Objects/
+ProteusProject/Project Backups
+ProteusProject/*.workspace
 *.uvgui.*
 *.code-workspace
