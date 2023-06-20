@@ -1,1 +1,0 @@
-"code\source\test.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\code;.\code\header;.\code\source) DEBUG OBJECTEXTEND PRINT(.\Listings\test.lst) OBJECT(.\Objects\test.obj)

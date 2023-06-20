@@ -1,9 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\main.obj",
-".\Objects\Delay.obj",
-".\Objects\Led.obj",
-".\Objects\Timer.obj",
-".\Objects\Motor.obj" 
-TO ".\Objects\STC89C52" 
-PRINT(".\Listings\STC89C52.m51") RAMSIZE(256) 
-DISABLEWARNING (16) 
