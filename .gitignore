@@ -1,4 +1,4 @@
-.vscode
-Listings
-Objects
+.vscode/
+Listings/
+Objects/
 *.uvgui.*
