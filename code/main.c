@@ -1,5 +1,6 @@
 #include "Uint8ToBin.h"
 #include "CustomType.h"
+#include "Pid.h"
 #include "Motor.h"
 #include "Timer.h"
 #include "REG52.H"
@@ -13,8 +14,6 @@
 
 void main()
 {
-    uint32 num_ms = 0;
-    uint8 index = 0;
     int32 currentRPM;
     initLedSegData();
     initTimer0();
@@ -22,7 +21,7 @@ void main()
     TR1 = 1;
     while (1)
     {
-        if((currentRPM = getSpeed()) >= 0){
+        if((currentRPM = sampleRPM()) >= 0){
             ledDisplayUint(currentRPM, 0, 3);
         }
     }

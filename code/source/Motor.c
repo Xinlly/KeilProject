@@ -11,7 +11,7 @@ int32 calculateSpeed()
     currentRPM += 0.5;//四舍五入
     return currentRPM;
 }
-int32 getSpeed()
+int32 sampleRPM()
 {
     static uint32 timeMark_ms;
     int32 currentRPM;
