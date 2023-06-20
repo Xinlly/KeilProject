@@ -2,30 +2,22 @@
 #include "Timer.h"
 #include "CustomType.h"
 #include "REG52.H"
-int32 calculateSpeed()
-{
-    int32 currentPulses;
-    float64 currentRPM;
-    currentPulses = currentPulsesH * 256 + currentPulsesL;
-    currentRPM = currentPulses * gain_pulsesToRPM ;
-    currentRPM += 0.5;//四舍五入
-    return currentRPM;
-}
-int32 sampleRPM()
+static float64 currentRPM;
+void sampleRPM()
 {
     static uint32 timeMark_ms;
-    int32 currentRPM;
+    static int32 currentPulses;
     if (getSysTime_ms() - timeMark_ms >= pulseSamplesCycle_ms)
     {
         timeMark_ms = getSysTime_ms();
-        currentRPM = calculateSpeed();
+        currentPulses = currentPulsesH * 256 + currentPulsesL;
+        currentRPM = currentPulses * gain_pulsesToRPM;
         currentPulsesH = 0x00;
         currentPulsesL = 0x00;
         TF1 = 0;
-        return currentRPM;
     }
-    else
-    {
-        return -1;
-    }
+}
+float64 getRPM()
+{
+    return currentRPM;
 }

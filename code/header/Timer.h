@@ -7,8 +7,8 @@
 #define sysTimer_mod 0x01
 // FE for 500us@11.0592MHz
 #define sysTimer_initValue_H 0xFE
-//33 for 500us@11.0592MHz，考虑LED显示，矫正为53
-#define sysTimer_initValue_L 0x53
+//33 for 500us@11.0592MHz，考虑LED显示，矫正为：
+#define sysTimer_initValue_L 0x54
 
 extern bit flag_inter;
 

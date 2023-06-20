@@ -9,6 +9,7 @@
 //gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
 #define gain_pulsesToRPM 5/6 //
 
-int32 sampleRPM();
+void sampleRPM();
+float64 getRPM();
 
 #endif
