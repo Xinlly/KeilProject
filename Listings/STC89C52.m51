@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/20/2023  15:00:52  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/20/2023  15:03:56  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
             CODE    0448H     0019H     UNIT         ?PR?INITLEDSEGDATA?LED
             CODE    0461H     0013H     UNIT         ?PR?GETSYSTIMES?TIMER
             CODE    0474H     0012H     UNIT         ?PR?INITTIMER0?TIMER
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 2
 
 
             CODE    0486H     0012H     UNIT         ?PR?GETSYSTIMEMS?TIMER
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 3
 
 
   C:013FH         SYMBOL        IDATALOOP
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   C:03DBH         LINE#         26
   C:03E4H         LINE#         27
   C:03E4H         LINE#         28
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 4
 
 
   -------         ENDPROC       MAIN
@@ -239,7 +239,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   C:02C3H         LINE#         59
   C:02C5H         LINE#         60
   C:02C7H         LINE#         61
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 5
 
 
   C:02D3H         LINE#         62
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   C:0345H         LINE#         107
   C:035EH         LINE#         108
   C:0362H         LINE#         109
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 6
 
 
   -------         ENDPROC       _LEDDISPLAYUINT
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   C:0474H         LINE#         16
   C:0474H         LINE#         17
   C:0474H         LINE#         18
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 7
 
 
   C:0477H         LINE#         19
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\STC89C52 (?C_STARTUP)
   D:008BH         PUBLIC        TL1
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:00:52  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2023  15:03:56  PAGE 8
 
 
   -------         PROC          GETSPEED
