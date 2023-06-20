@@ -23,7 +23,7 @@ void main()
     while (1)
     {
         if((currentRPM = getSpeed()) >= 0){
-            ledDisplayUint(currentRPM, 0, 4);
+            ledDisplayUint(currentRPM, 0, 3);
         }
     }
 }
