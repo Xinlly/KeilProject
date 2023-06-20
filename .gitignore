@@ -2,3 +2,4 @@
 Listings/
 Objects/
 *.uvgui.*
+*.code-workspace
