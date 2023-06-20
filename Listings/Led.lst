@@ -1,0 +1,154 @@
+C51 COMPILER V9.60.7.0   LED                                                               06/20/2023 11:35:57 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN .\Objects\Led.obj
+COMPILER INVOKED BY: C:\Users\Xinlly\ProgramFiles\Normal\Keil_v5\C51\BIN\C51.EXE code\source\Led.c OPTIMIZE(8,SPEED) BRO
+                    -WSE INCDIR(.\code;.\code\header;.\code\source) DEBUG OBJECTEXTEND PRINT(.\Listings\Led.lst) OBJECT(.\Objects\Led.obj)
+
+line level    source
+
+   1          #include "CustomType.h"
+   2          #include "Uint8ToBin.h"
+   3          #include "Led.h"
+   4          #include "Timer.h"
+   5          uint8 led_bitIndex;
+   6          uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+   7          uint8 led_bitIndex_table[] = {
+   8              bin(10000000),
+   9              bin(01000000),
+  10              bin(00100000),
+  11              bin(00010000),
+  12              bin(00001000),
+  13              bin(00000100),
+  14              bin(00000010),
+  15              bin(00000001) //
+  16          };
+  17          Led_segData_table led_segData_table = {
+  18              {
+  19                  0xC0, //"0"
+  20                  0xF9, //"1"
+  21                  0xA4, //"2"
+  22                  0xB0, //"3"
+  23                  0x99, //"4"
+  24                  0x92, //"5"
+  25                  0x82, //"6"
+  26                  0xF8, //"7"
+  27                  0x80, //"8"
+  28                  0x90, //"9"
+  29                  0x88, //"A"
+  30                  0x83, //"B"
+  31                  0xC6, //"C"
+  32                  0xA1, //"D"
+  33                  0x86, //"E"
+  34                  0x8E  //"F"
+  35              },
+  36              0 //
+  37          };
+  38          void initLedSegData()
+  39          {
+  40   1          led_segData_table.line = 0x40; //"-"
+  41   1          led_segData_table.off = 0xFF;  // 熄灭
+  42   1          led_segData_table.H = 0x76;    //"H"
+  43   1          led_segData_table.L = 0x38;    //"L"
+  44   1          led_segData_table.n = 0x37;    //"n"
+  45   1          led_segData_table.u = 0x3E;    //"u"
+  46   1          led_segData_table.P = 0x73;    //"P"
+  47   1          led_segData_table.o = 0x5C;    //"o"
+  48   1      }
+  49          
+  50          uint8 uint8ToSeg(uint8 unit8Data)
+  51          {
+  52   1          uint8 led_displayData;
+  53   1          if (unit8Data >= 0 && unit8Data <= 9)
+  54   1          {
+C51 COMPILER V9.60.7.0   LED                                                               06/20/2023 11:35:57 PAGE 2   
+
+  55   2              led_displayData = led_segData_table.normal[unit8Data];
+  56   2          }
+  57   1          else if (unit8Data >= '0' && unit8Data <= '9')
+  58   1          {
+  59   2              led_displayData = led_segData_table.normal[unit8Data - '0'];
+  60   2          }
+  61   1          else if (unit8Data >= 'A' && unit8Data <= 'F')
+  62   1          {
+  63   2              led_displayData = led_segData_table.normal[unit8Data - 'A' + 10];
+  64   2          }
+  65   1          else
+  66   1          {
+  67   2              switch (unit8Data)
+  68   2              {
+  69   3              case 'H':
+  70   3                  led_displayData = led_segData_table.H;
+  71   3                  break;
+  72   3              case 'L':
+  73   3                  led_displayData = led_segData_table.L;
+  74   3                  break;
+  75   3              case 'n':
+  76   3                  led_displayData = led_segData_table.n;
+  77   3                  break;
+  78   3              case 'u':
+  79   3                  led_displayData = led_segData_table.u;
+  80   3                  break;
+  81   3              case 'P':
+  82   3                  led_displayData = led_segData_table.P;
+  83   3                  break;
+  84   3              default:
+  85   3                  led_displayData = led_segData_table.line;
+  86   3                  break;
+  87   3              }
+  88   2          }
+  89   1          return led_displayData;
+  90   1      }
+  91          
+  92          void ledDisplay(uint8 displayData, uint8 led_bitIndex)
+  93          {
+  94   1          led_segPort = led_segData_table.off;
+  95   1          led_bitPort = led_bitIndex_table[led_bitIndex];
+  96   1          led_segPort = 0xFF;
+  97   1          led_segPort = displayData;
+  98   1      }
+  99          
+ 100          void ledDisplayUint(uint32 dispalyData, uint8 bitIndex, uint8 bitCount)
+ 101          {
+ 102   1          uint8 tempIndex, tempIndexMax = bitIndex + bitCount;
+ 103   1          for (tempIndex = bitIndex; tempIndex < tempIndexMax; tempIndex++)
+ 104   1          {
+ 105   2              led_segData[tempIndex] = uint8ToSeg(dispalyData % 10);
+ 106   2              // ledDisplay(led_segData[tempIndex], tempIndex);
+ 107   2              dispalyData /= 10;
+ 108   2          }
+ 109   1      }
+ 110          
+ 111          void ledDisplayTask()
+ 112          {
+ 113   1          led_segPort = led_segData_table.off;
+ 114   1          /* led_selectSeg_enable = 1;
+ 115   1          led_selectSeg_enable = 0; */
+ 116   1      
+C51 COMPILER V9.60.7.0   LED                                                               06/20/2023 11:35:57 PAGE 3   
+
+ 117   1          led_bitPort = led_bitIndex_table[led_bitIndex];
+ 118   1          /* led_selectBit_enable = 1;
+ 119   1          led_selectBit_enable = 0; */
+ 120   1      
+ 121   1          led_segPort = led_segData[led_bitIndex];
+ 122   1          /* led_selectSeg_enable = 1;
+ 123   1          led_selectSeg_enable = 0; */
+ 124   1      
+ 125   1          led_bitIndex = ++led_bitIndex >= led_bitCount ? 0 : led_bitIndex;
+ 126   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    266    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     41       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

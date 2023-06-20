@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "reg51.h": "c",
+        "REG51.H": "cpp",
+        "intrin.h": "c",
+        "ctype.h": "c",
+        "CTYPE.H": "cpp",
+        "stdio.h": "c",
+        "absacc.h": "c",
+        "ABSACC.H": "cpp",
+        "intrins.h": "c",
+        "reg52.h": "c",
+        "REG52.H": "cpp",
+        "customtype.h": "c",
+        "timer.h": "c",
+        "led.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

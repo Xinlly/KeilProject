@@ -1,0 +1,8 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\Delay.obj",
+".\Objects\Led.obj",
+".\Objects\Timer.obj",
+".\Objects\Motor.obj" 
+TO ".\Objects\8051_all" 
+PRINT(".\Listings\8051_all.m51") DISABLEWARNING (16) 

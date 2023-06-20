@@ -1,0 +1,1 @@
+"code\source\Motor.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\code;.\code\header;.\code\source) DEBUG OBJECTEXTEND PRINT(.\Listings\Motor.lst) OBJECT(.\Objects\Motor.obj)

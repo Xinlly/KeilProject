@@ -1,0 +1,145 @@
+{
+    "configurations": [
+        {
+            "name": "Target 1",
+            "includePath": [
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\header",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\source",
+                "C:\\Users\\Xinlly\\ProgramFiles\\Normal\\Keil_v5\\C51\\INC",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "STC89C52",
+            "includePath": [
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\header",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\source",
+                "C:\\Users\\Xinlly\\ProgramFiles\\Normal\\Keil_v5\\C51\\INC",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "test",
+            "includePath": [
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\header",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\source",
+                "C:\\Users\\Xinlly\\ProgramFiles\\Normal\\Keil_v5\\C51\\INC",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "8051_all",
+            "includePath": [
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\header",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject\\code\\source",
+                "C:\\Users\\Xinlly\\ProgramFiles\\Normal\\Keil_v5\\C51\\INC",
+                "c:\\Users\\Xinlly\\Documents\\Proteus\\demo\\KeilProject"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}
