@@ -1,7 +1,7 @@
 #include "Motor.h"
 #include "Timer.h"
 #include "CustomType.h"
-#include "REG52.H"
+#include "REG51.H"
 static float64 currentRPM;
 int8 sampleRPM()
 {

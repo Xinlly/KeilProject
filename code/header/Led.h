@@ -1,12 +1,12 @@
 #ifndef _Led_h
 #define _Led_h
 
-#include "REG52.H"
+// #include "REG52.H"
 #define led_bitCount 8
 #define led_segPort P0
 #define led_bitPort P1
-sbit led_selectSeg_enable = P2 ^ 6;
-sbit led_selectBit_enable = P2 ^ 7;
+#define led_selectSeg_enable = P2^6;
+#define led_selectBit_enable = P2^7;
 
 extern uint8 led_bitIndex;
 extern uint8 led_segData[];

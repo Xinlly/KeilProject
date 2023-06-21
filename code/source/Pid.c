@@ -1,10 +1,11 @@
 #include "CustomType.h"
 #include "Timer.h"
-float32 Kp = 1;
-static float32 Ki, Kd, Ti, Td, Ucontrol, deltaUcontrol;
-void increPIDCalculate(float32 error, float32 targetValue, float32 currentValue, float32 sampleCycle_s)
+static idata float32 Kp, Ti, Td, Ucontrol, deltaUcontrol;
+void increPIDCalculate(float32 targetValue, float32 currentValue, float32 sampleCycle_s)
 {
-    static float32 error_old[2], deltaUp, deltaUi, deltaUd;
+    static idata float32 error_old[2];
+    idata float32 deltaUp, deltaUi, deltaUd, Ki, Kd;
+    idata float32 error = targetValue -currentValue;
     Ki = 0 == Ti ? 0 : Kp * sampleCycle_s / Ti;
     Kd = Kp * Td / sampleCycle_s;
     deltaUp = Kp * (error - error_old[0]);

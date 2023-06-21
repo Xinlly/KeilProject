@@ -1,9 +1,9 @@
-#include "Uint8ToBin.h"
 #include "CustomType.h"
+#include "Uint8ToBin.h"
 #include "Pid.h"
 #include "Motor.h"
 #include "Timer.h"
-#include "REG52.H"
+#include "REG51.H"
 #include "Led.h"
 #include "INTRINS.H"
 #include "CTYPE.H"
@@ -21,6 +21,7 @@ void main()
     while (1)
     {
         sampleRPM();
-        ledDisplayUint(getRPM(), 0, 3);
+        ledDisplayUint(getRPM() + 0.5, 0, 3);
+        ledDisplayUint(getSysTime_s(), 4, 2);
     }
 }

@@ -5,9 +5,9 @@
 #define pulsesPerRevolution 360
 #define currentPulsesH TH1
 #define currentPulsesL TL1
-#define pulseSamplesCycle_ms 200
+#define pulseSamplesCycle_ms 300
 //gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
-#define gain_pulsesToRPM 5/6 //
+#define gain_pulsesToRPM 5/9 //
 
 int8 sampleRPM();
 float64 getRPM();

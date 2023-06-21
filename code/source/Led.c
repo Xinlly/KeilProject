@@ -1,5 +1,6 @@
 #include "CustomType.h"
 #include "Uint8ToBin.h"
+#include "REG52.H"
 #include "Led.h"
 #include "Timer.h"
 uint8 led_bitIndex;

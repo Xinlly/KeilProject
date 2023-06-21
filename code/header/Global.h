@@ -5,6 +5,5 @@
 #else
 #define EXT extern
 #endif
-#include "CustomType.h"
 EXT uint32 Global0;
 #endif
