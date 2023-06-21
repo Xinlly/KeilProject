@@ -6,14 +6,14 @@
 uint8 led_bitIndex;
 uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 uint8 led_bitIndex_table[] = {
-    bin(10000000),
-    bin(01000000),
-    bin(00100000),
-    bin(00010000),
-    bin(00001000),
-    bin(00000100),
+    bin(00000001),
     bin(00000010),
-    bin(00000001) //
+    bin(00000100),
+    bin(00001000),
+    bin(00010000),
+    bin(00100000),
+    bin(01000000),
+    bin(10000000) //
 };
 Led_segData_table led_segData_table = {
     {
