@@ -1,7 +1,7 @@
 #include "CustomType.h"
 #include "Timer.h"
-idata float32 Kp;
-static idata float32 Ti, Td, Ucontrol, deltaUcontrol;
+idata float32 Kp = 1;
+static idata float32 Ti, Td, Ucontrol, deltaUcontrol, deltaUcontrol_old;
 void increPIDCalculate(float32 targetValue, float32 currentValue, float32 sampleCycle_s)
 {
     static idata float32 error_old[2];
@@ -13,7 +13,8 @@ void increPIDCalculate(float32 targetValue, float32 currentValue, float32 sample
     deltaUi = Ki * error;
     deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
     deltaUcontrol = deltaUp + deltaUi + deltaUd;
-    
+    Ucontrol += deltaUcontrol;
+
     error_old[1] = error_old[0];
     error_old[0] = error;
 }
@@ -21,4 +22,9 @@ void increPIDCalculate(float32 targetValue, float32 currentValue, float32 sample
 float32 getdeltaUcontrol()
 {
     return deltaUcontrol;
+}
+
+uint8 getUcontrol()
+{
+    return deltaUcontrol + 0.5;
 }

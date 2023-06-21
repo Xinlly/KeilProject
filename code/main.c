@@ -14,6 +14,7 @@
 
 void main()
 {
+    P2 = 0;
     initLedSegData();
     initTimer0();
     initTimer1();
@@ -22,6 +23,7 @@ void main()
     {
         sampleRPM();
         ledDisplayUint(getRPM() + 0.5, 0, 3);
-        ledDisplayUint(getSysTime_s(), 4, 2);
+        ledDisplayUint(getdeltaUcontrol(), 4, 4);
+        P2 = getUcontrol();
     }
 }

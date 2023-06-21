@@ -1,4 +1,5 @@
 #include "Motor.h"
+#include "Pid.h"
 #include "Timer.h"
 #include "CustomType.h"
 #include "REG51.H"
@@ -15,6 +16,7 @@ int8 sampleRPM()
         currentPulsesH = 0x00;
         currentPulsesL = 0x00;
         TF1 = 0;
+        increPIDCalculate(150, currentRPM, pulseSamplesCycle_ms);
         return 0;
     }
     return -1;
