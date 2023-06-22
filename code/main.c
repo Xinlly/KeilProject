@@ -12,18 +12,38 @@
 #define Globals
 #include "Global.h"
 
-void main()
+void init()
 {
+    // gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
+    // 10/3
+    idata float64 gain_pulsesToRPM = 10 / 3;
     P2 = 0;
+    setGain_pulsesToRPM(gain_pulsesToRPM);
     initLedSegData();
+    initPID(10, 0, 0, pulseSamplesCycle_ms * 1000);
     initTimer0();
     initTimer1();
-    TR1 = 1;
+}
+
+void main()
+{
+    static uint32 timeMarkForCal_ms, timeMarkForLED_ms;
+    static int32 temp;
+    init();
     while (1)
     {
-        sampleRPM();
-        ledDisplayUint(getRPM() + 0.5, 0, 3);
-        ledDisplayUint(getdeltaUcontrol(), 4, 4);
-        P2 = getUcontrol() + 8;
+        if (getSysTime_ms() - timeMarkForCal_ms >= pulseSamplesCycle_ms)
+        {
+            timeMarkForCal_ms = getSysTime_ms();
+            taskSampleRPM();
+            taskIncrePIDCalculate(100, getRPM());
+        }
+        if (getSysTime_ms() - timeMarkForLED_ms > 1000)
+        {
+            timeMarkForLED_ms = getSysTime_us();
+            temp = getUcontrol();
+            setLedOut_int(-12, 4, 3);
+            setLedOut_int(getRPM() + 0.5, 0, 4);
+        }
     }
 }

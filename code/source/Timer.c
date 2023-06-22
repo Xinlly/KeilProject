@@ -1,7 +1,7 @@
 #include "REG52.H"
 #include "CustomType.h"
-#include "Led.h"
 #include "Timer.h"
+#include "Led.h"
 uint32 currentSysTime_us = 0;
 uint32 currentSysCycleNum = 0;
 bit flag_inter = 0;
@@ -30,6 +30,7 @@ void initTimer1() // 500us@11.0592MHz
 	TH1 = 0x00;	  
 	TF1 = 0;
 	T1 = 0xFF;
+	TR1 = 1;
 }
 uint32 getSysCycleNum()
 {

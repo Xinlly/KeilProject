@@ -27,6 +27,6 @@ extern Led_segData_table led_segData_table;
 
 void initLedSegData();
 uint8 uint8ToSeg(uint8 uint8Data);
-void ledDisplayUint(uint32 dispalyData, uint8 bitIndex, uint8 bitCount);
+void setLedOut_int(int32 dispalyData, uint8 bitIndex, uint8 bitCount);
 void ledDisplayTask();
 #endif

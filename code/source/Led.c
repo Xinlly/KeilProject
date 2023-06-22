@@ -3,6 +3,7 @@
 #include "REG52.H"
 #include "Led.h"
 #include "Timer.h"
+#include "MATH.H"
 uint8 led_bitIndex;
 uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 uint8 led_bitIndex_table[] = {
@@ -38,7 +39,7 @@ Led_segData_table led_segData_table = {
 };
 void initLedSegData()
 {
-    led_segData_table.line = 0x40; //"-"
+    led_segData_table.line = 0xBF; //"-"
     led_segData_table.off = 0xFF;  // 熄灭
     led_segData_table.H = 0x76;    //"H"
     led_segData_table.L = 0x38;    //"L"
@@ -83,7 +84,7 @@ uint8 uint8ToSeg(uint8 unit8Data)
             led_displayData = led_segData_table.P;
             break;
         default:
-            led_displayData = led_segData_table.line;
+            led_displayData = led_segData_table.n;
             break;
         }
     }
@@ -98,15 +99,17 @@ void ledDisplay(uint8 displayData, uint8 led_bitIndex)
     led_segPort = displayData;
 }
 
-void ledDisplayUint(uint32 dispalyData, uint8 bitIndex, uint8 bitCount)
+void setLedOut_int(int32 dispalyData, uint8 bitIndex, uint8 bitCount)
 {
     uint8 tempIndex, tempIndexMax = bitIndex + bitCount;
-    for (tempIndex = bitIndex; tempIndex < tempIndexMax; tempIndex++)
+    int32 tempData = abs(dispalyData);
+    for (tempIndex = bitIndex; tempIndex < tempIndexMax - 1; tempIndex++)
     {
-        led_segData[tempIndex] = uint8ToSeg(dispalyData % 10);
-        // ledDisplay(led_segData[tempIndex], tempIndex);
-        dispalyData /= 10;
+        led_segData[tempIndex] = uint8ToSeg(tempData % 10);
+        tempData /= 10;
     }
+    if (dispalyData < 0)
+        led_segData[tempIndex] = led_segData_table.line;
 }
 
 void ledDisplayTask()

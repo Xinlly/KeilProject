@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "CustomType.h"
 #include "REG51.H"
+static float64 gain_pulsesToRPM;
 static float64 currentRPM;
 int8 sampleRPM()
 {
@@ -16,10 +17,22 @@ int8 sampleRPM()
         currentPulsesH = 0x00;
         currentPulsesL = 0x00;
         TF1 = 0;
-        increPIDCalculate(150, currentRPM, pulseSamplesCycle_ms);
+        increPIDCalculate(150, currentRPM);
         return 0;
     }
     return -1;
+}
+void setGain_pulsesToRPM(float64 value){
+    gain_pulsesToRPM = value;
+}
+void taskSampleRPM()
+{
+    static int32 currentPulses;
+    currentPulses = currentPulsesH * 256 + currentPulsesL;
+    currentRPM = currentPulses * gain_pulsesToRPM;
+    currentPulsesH = 0x00;
+    currentPulsesL = 0x00;
+    TF1 = 0;
 }
 float64 getRPM()
 {
