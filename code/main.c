@@ -66,7 +66,8 @@ void init()
 
 void main()
 {
-    static uint32 timeMarkCalculate_ms, timeMarkRefreshLED_ms;
+    static uint32 timeMarkCalculate_ms;
+    // static uint32 timeMarkRefreshLED_ms;
     P2 = 0x80; // 上电时转速置0
     init();
     while (1)
@@ -77,12 +78,14 @@ void main()
             timeMarkCalculate_ms = getSysTime_ms();
             taskSampleRPM();
             increPIDCalculate(targetRPM_Abs, getRPM());
+            setLedOut_int(targetRPM, 4, 4);
+            setLedOut_int(sign_taegetRPM * getRPM() + 0.5, 0, 4);
         }
-        if (getSysTime_ms() - timeMarkRefreshLED_ms >= 360)
+        /* if (getSysTime_ms() - timeMarkRefreshLED_ms >= 360)
         {
             timeMarkRefreshLED_ms = getSysTime_ms();
             setLedOut_int(targetRPM, 4, 4);
             setLedOut_int(sign_taegetRPM * getRPM() + 0.5, 0, 4);
-        }
+        } */
     }
 }
