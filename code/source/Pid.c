@@ -6,6 +6,7 @@ static idata float32 Ti, Td, Ki, Kd;
 static idata float32 error, error_old[2], sampleCycle_s;
 static idata float32 Ucontrol, deltaUcontrol, deltaUcontrol_old;
 static idata float32 deltaUp, deltaUi, deltaUd;
+
 void increPIDCalculate(float32 targetValue, float32 currentValue)
 {
     static uint8 UcontrolForOut;
@@ -15,39 +16,36 @@ void increPIDCalculate(float32 targetValue, float32 currentValue)
     deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
     deltaUcontrol = deltaUp + deltaUi + deltaUd;
     Ucontrol += deltaUcontrol;
-    UcontrolForOut = (uint8)Ucontrol + 0x80;
+    if (Ucontrol < 0)
+    {
+        Ucontrol = 0;
+    }
+    else if (Ucontrol > 127)
+    {
+        Ucontrol = 127;
+    }
+    UcontrolForOut = (uint8)Ucontrol + 0x80 + 0.5;
     P2 = UcontrolForOut;
 
     error_old[1] = error_old[0];
     error_old[0] = error;
 }
 
-void taskIncrePIDCalculate(float32 targetValue, float32 currentValue)
-{
-    static uint8 UcontrolForOut;
-    error = targetValue - currentValue;
-    deltaUp = Kp * (error - error_old[0]);
-    deltaUi = Ki * error;
-    deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
-    deltaUcontrol = deltaUp + deltaUi + deltaUd;
-    Ucontrol += deltaUcontrol;
-    UcontrolForOut = (uint8)Ucontrol + 0x80;
-    P2 = UcontrolForOut;
-
-    error_old[1] = error_old[0];
-    error_old[0] = error;
-}
-
-float32 getdeltaUcontrol()
+float32 getDeltaUcontrol()
 {
     return deltaUcontrol;
 }
 
 float32 getUcontrol()
 {
-    return deltaUcontrol;
+    return Ucontrol;
 }
-
+void setPIDValue(float32 valueKp, float32 valueKi, float32 valueKd)
+{
+    Kp = valueKp;
+    Ki = valueKi;
+    Kd = valueKd;
+}
 void PID_setKp(float32 value)
 {
     Kp = value;

@@ -81,13 +81,13 @@
       <Books>
         <Book>
           <Number>0</Number>
-          <Title>8051 Instruction Set Manual</Title>
-          <Path>DATASHTS\INTEL\ISM51.PDF</Path>
+          <Title>Data Sheet</Title>
+          <Path>DATASHTS\ATMEL\AT89C52_DS.PDF</Path>
         </Book>
         <Book>
           <Number>1</Number>
-          <Title>Data Sheet</Title>
-          <Path>DATASHTS\INTEL\8XC52_54_58_DS.PDF</Path>
+          <Title>Instruction Set Manual</Title>
+          <Path>DATASHTS\ATMEL\AT_C51ISM.PDF</Path>
         </Book>
       </Books>
       <DebugOpt>
@@ -370,7 +370,7 @@
 
   <Group>
     <GroupName>source</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -426,7 +426,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\code\source\Pid.c</PathWithFileName>

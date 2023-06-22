@@ -108,8 +108,7 @@ void setLedOut_int(int32 dispalyData, uint8 bitIndex, uint8 bitCount)
         led_segData[tempIndex] = uint8ToSeg(tempData % 10);
         tempData /= 10;
     }
-    if (dispalyData < 0)
-        led_segData[tempIndex] = led_segData_table.line;
+    led_segData[tempIndex] = dispalyData < 0 ? led_segData_table.line : uint8ToSeg(tempData % 10);
 }
 
 void ledDisplayTask()

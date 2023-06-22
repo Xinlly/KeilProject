@@ -14,13 +14,12 @@
 
 void init()
 {
+    P2 = 0x80;
     // gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
-    // 10/3
-    idata float64 gain_pulsesToRPM = 10 / 3;
-    P2 = 0;
-    setGain_pulsesToRPM(gain_pulsesToRPM);
+    setGain_pulsesToRPM(3);
     initLedSegData();
-    initPID(10, 0, 0, pulseSamplesCycle_ms * 1000);
+    // initPID(1000, 0, 0, pulseSamplesCycle_ms / 1000);
+    setPIDValue(0.28, 0.14, 0);
     initTimer0();
     initTimer1();
 }
@@ -32,17 +31,17 @@ void main()
     init();
     while (1)
     {
-        if (getSysTime_ms() - timeMarkForCal_ms >= pulseSamplesCycle_ms)
+        if (getSysTime_ms() - timeMarkForCal_ms >= pulseSamplesCycle_ms - 1)
         {
             timeMarkForCal_ms = getSysTime_ms();
             taskSampleRPM();
-            taskIncrePIDCalculate(100, getRPM());
-        }
-        if (getSysTime_ms() - timeMarkForLED_ms > 1000)
-        {
-            timeMarkForLED_ms = getSysTime_us();
+            increPIDCalculate(150, getRPM());
+            /* }
+            if (getSysTime_ms() - timeMarkForLED_ms > 100)
+            { */
+            timeMarkForLED_ms = getSysTime_ms();
             temp = getUcontrol();
-            setLedOut_int(-12, 4, 3);
+            setLedOut_int(temp, 4, 4);
             setLedOut_int(getRPM() + 0.5, 0, 4);
         }
     }
