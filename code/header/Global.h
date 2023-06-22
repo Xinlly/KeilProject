@@ -6,5 +6,7 @@
 #else
 #define EXT extern
 #endif
-EXT uint16 targetRPM;
+EXT int16 targetRPM;
+EXT uint16 targetRPM_Abs;
+EXT int8 sign_taegetRPM;
 #endif

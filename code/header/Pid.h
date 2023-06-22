@@ -6,6 +6,7 @@ extern idata float32 Ti, Td, Ki, Kd;
 extern idata float32 error, error_old[2], sampleCycle_s;
 extern idata float32 Ucontrol, deltaUcontrol, deltaUcontrol_old;
 extern idata float32 deltaUp, deltaUi, deltaUd; */
+#define Uctrl_Port P2
 
 void setPIDValue(float32 valueKp, float32 valueKi, float32 valueKd);
 void increPIDCalculate(float32 targetValue, float32 currentValue);

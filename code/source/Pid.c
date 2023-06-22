@@ -1,5 +1,8 @@
 #include "CustomType.h"
+#include "Global.h"
 #include "Timer.h"
+#include "Pid.h"
+
 #include "REG52.H"
 idata float32 Kp = 1;
 static idata float32 Ti, Td, Ki, Kd;
@@ -7,25 +10,32 @@ static idata float32 error, error_old[2], sampleCycle_s;
 static idata float32 Ucontrol, deltaUcontrol, deltaUcontrol_old;
 static idata float32 deltaUp, deltaUi, deltaUd;
 
-void increPIDCalculate(float32 targetValue, float32 currentValue)
+void increPIDCalculate(float32 targetValue_Abs, float32 currentValue_Abs)
 {
     static uint8 UcontrolForOut;
-    error = targetValue - currentValue;
-    deltaUp = Kp * (error - error_old[0]);
-    deltaUi = Ki * error;
-    deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
-    deltaUcontrol = deltaUp + deltaUi + deltaUd;
-    Ucontrol += deltaUcontrol;
-    if (Ucontrol < 0)
+    if (targetRPM_Abs != 0)
     {
-        Ucontrol = 0;
+        error = targetValue_Abs - currentValue_Abs;
+        deltaUp = Kp * (error - error_old[0]);
+        deltaUi = Ki * error;
+        deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
+        deltaUcontrol = deltaUp + deltaUi + deltaUd;
+        Ucontrol += deltaUcontrol;
+        if (Ucontrol < 0)
+        {
+            Ucontrol = 0;
+        }
+        else if (Ucontrol > 127)
+        {
+            Ucontrol = 127;
+        }
+        UcontrolForOut = sign_taegetRPM * (uint8)(Ucontrol + 0.5) + 0x80;
     }
-    else if (Ucontrol > 127)
+    else
     {
-        Ucontrol = 127;
+        UcontrolForOut = 0x80;
     }
-    UcontrolForOut = (uint8)(Ucontrol+0.5) + 0x80;
-    P2 = UcontrolForOut;
+    Uctrl_Port = UcontrolForOut;
 
     error_old[1] = error_old[0];
     error_old[0] = error;
