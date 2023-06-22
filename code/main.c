@@ -24,6 +24,6 @@ void main()
         sampleRPM();
         ledDisplayUint(getRPM() + 0.5, 0, 3);
         ledDisplayUint(getdeltaUcontrol(), 4, 4);
-        P2 = getUcontrol();
+        P2 = getUcontrol() + 8;
     }
 }
