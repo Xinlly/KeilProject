@@ -24,7 +24,7 @@ void increPIDCalculate(float32 targetValue, float32 currentValue)
     {
         Ucontrol = 127;
     }
-    UcontrolForOut = (uint8)Ucontrol + 0x80 + 0.5;
+    UcontrolForOut = (uint8)(Ucontrol+0.5) + 0x80;
     P2 = UcontrolForOut;
 
     error_old[1] = error_old[0];
