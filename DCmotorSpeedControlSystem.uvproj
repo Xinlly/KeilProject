@@ -392,11 +392,6 @@
           <GroupName>source</GroupName>
           <Files>
             <File>
-              <FileName>Delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\code\source\Delay.c</FilePath>
-            </File>
-            <File>
               <FileName>Led.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\Led.c</FilePath>
@@ -415,6 +410,11 @@
               <FileName>Pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\Pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>ExInterrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\ExInterrupt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -806,11 +806,6 @@
           <GroupName>source</GroupName>
           <Files>
             <File>
-              <FileName>Delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\code\source\Delay.c</FilePath>
-            </File>
-            <File>
               <FileName>Led.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\Led.c</FilePath>
@@ -829,6 +824,11 @@
               <FileName>Pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\Pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>ExInterrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\ExInterrupt.c</FilePath>
             </File>
           </Files>
         </Group>

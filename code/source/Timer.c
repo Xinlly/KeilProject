@@ -19,7 +19,6 @@ void initTimer0()
 	TL0 = sysTimer_initValue_L;	  
 	TH0 = sysTimer_initValue_H;	  
 	TF0 = 0;	  
-	EA = 1;
 	ET0 = 1;
 	TR0 = 1; 
 }
