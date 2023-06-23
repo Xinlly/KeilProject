@@ -2,9 +2,11 @@
 #include "Global.h"
 #include "Timer.h"
 #include "Pid.h"
+#include "8255A.h"
 
 #include "REG52.H"
 #include "MATH.H"
+#include "ABSACC.H"
 
 idata float32 deltaErrorMax;
 idata float32 Kp = 1;

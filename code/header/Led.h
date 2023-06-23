@@ -3,8 +3,8 @@
 
 // #include "REG52.H"
 #define led_bitCount 8
-#define led_segPort P0
-#define led_bitPort P1
+#define led_segPort _8255A_0PA_port
+#define led_bitPort _8255A_0PB_port
 #define led_selectSeg_enable = P2^6;
 #define led_selectBit_enable = P2^7;
 

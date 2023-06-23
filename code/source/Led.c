@@ -1,9 +1,13 @@
 #include "CustomType.h"
 #include "Uint8ToBin.h"
-#include "REG52.H"
 #include "Led.h"
 #include "Timer.h"
+#include "8255A.h"
+
+#include "REG52.H"
 #include "MATH.H"
+#include "ABSACC.H"
+
 uint8 led_bitIndex;
 uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 uint8 led_bitIndex_table[] = {

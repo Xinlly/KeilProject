@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "ExInterrupt.h"
 #include "Led.h"
+#include "8255A.h"
 
 #include "REG51.H"
 #include "INTRINS.H"
@@ -47,6 +48,8 @@ void sampleButton()
 
 void init()
 {
+    init8255A();
+    Uctrl_Port = 0x80; // 上电时转速置0
     targetRPM = 150;
     targetRPM_Abs = 150;
     sign_taegetRPM = 1;
@@ -70,7 +73,6 @@ void main()
 {
     static uint32 timeMarkCalculate_ms;
     // static uint32 timeMarkRefreshLED_ms;
-    P2 = 0x80; // 上电时转速置0
     init();
     while (1)
     {

@@ -416,6 +416,11 @@
               <FileType>1</FileType>
               <FilePath>.\code\source\ExInterrupt.c</FilePath>
             </File>
+            <File>
+              <FileName>8255A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\8255A.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -829,6 +834,11 @@
               <FileName>ExInterrupt.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\code\source\ExInterrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>8255A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\code\source\8255A.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -8,7 +8,7 @@ extern idata float32 error, error_old[2], sampleCycle_s;
 extern idata float32 Ucontrol, deltaUcontrol, deltaUcontrol_old;
 extern idata float32 deltaUp, deltaUi, deltaUd; */
 
-#define Uctrl_Port P2
+#define Uctrl_Port _8255A_1PA_port
 #define maxUd_Abs 300
 #define minUd_Abs 0
 #define maxUc_Abs 127

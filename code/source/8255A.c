@@ -5,5 +5,6 @@
 
 void init8255A()
 {
-    XBYTE[IO_8255A_portCtrl] = 0x80;
+    _8255A_0PCtrl_port = 0x80;
+    _8255A_1PCtrl_port = 0x80;
 }
