@@ -28,12 +28,12 @@ void sampleButton()
         {
             if (flag_interrupt0)
             {
-                targetRPM = targetRPM >= 290 ? 300 : targetRPM + 8;
+                targetRPM = targetRPM >= (300 - 15) ? 300 : targetRPM + 15;
                 flag_interrupt0 = 0;
             }
             if (flag_interrupt1)
             {
-                targetRPM = targetRPM <= -290 ? -300 : targetRPM - 8;
+                targetRPM = targetRPM <= -(300 - 15) ? -300 : targetRPM - 15;
                 flag_interrupt1 = 0;
             }
         }
@@ -53,7 +53,7 @@ void init()
     deltaErrorMax = 0.03 * targetRPM_Abs;
     // gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
     setGain_pulsesToRPM(3);
-    //setPIDValue((maxUc_Abs-minUc_Abs)/(maxUd_Abs-minUd_Abs)/8, Kp/2, Kp*0.1);
+    // setPIDValue((maxUc_Abs-minUc_Abs)/(maxUd_Abs-minUd_Abs)/8, Kp/2, Kp*0.1);
     setPIDValue(0.052917, 0.029398, 0.026458);
     initLedSegData();
     initExInterrupt();
