@@ -4,8 +4,11 @@
 #include "Pid.h"
 
 #include "REG52.H"
+#include "MATH.H"
+
+idata float32 deltaErrorMax;
 idata float32 Kp = 1;
-static idata float32 Ti, Td, Ki, Kd;
+static idata float32 Ti_sampleCycleNum, Td_sampleCycleNum, Ki, Kd;
 static idata float32 error, error_old[2], sampleCycle_s;
 static idata float32 Ucontrol, deltaUcontrol, deltaUcontrol_old;
 static idata float32 deltaUp, deltaUi, deltaUd;
@@ -20,7 +23,7 @@ void increPIDCalculate(float32 targetValue_Abs, float32 currentValue_Abs)
         deltaUi = Ki * error;
         deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
         deltaUcontrol = deltaUp + deltaUi + deltaUd;
-        Ucontrol += deltaUcontrol;
+        Ucontrol += abs(error) < deltaErrorMax ? 0 :  deltaUcontrol;
         if (Ucontrol < 0)
         {
             Ucontrol = 0;
@@ -62,17 +65,17 @@ void PID_setKp(float32 value)
 }
 void PID_setTi(float32 value)
 {
-    Ti = value;
+    Ti_sampleCycleNum = value;
 }
 void PID_seTd(float32 value)
 {
-    Td = value;
+    Td_sampleCycleNum = value;
 }
-void initPID(float32 KpValue, float32 TiValue, float32 TdValue, float32 sampleCycle_s)
+void initPID(float32 KpValue, float32 TiValue_sampleCycleNum, float32 TdValue_sampleCycleNum)
 {
     Kp = KpValue;
-    Ti = TiValue;
-    Td = TdValue;
-    Ki = 0 == Ti ? 0 : Kp * sampleCycle_s / Ti;
-    Kd = Kp * Td / sampleCycle_s;
+    Ti_sampleCycleNum = TiValue_sampleCycleNum;
+    Td_sampleCycleNum = TdValue_sampleCycleNum;
+    Ki = 0 == Ti_sampleCycleNum ? 0 : Kp / Ti_sampleCycleNum;
+    Kd = Kp * Td_sampleCycleNum;
 }
