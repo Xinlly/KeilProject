@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>80C52</TargetName>
+      <TargetName>AT89C52</TargetName>
       <ToolsetNumber>0x0</ToolsetNumber>
       <ToolsetName>MCS-51</ToolsetName>
       <uAC6>0</uAC6>
@@ -45,8 +45,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>80C52</OutputName>
+          <OutputDirectory>.\ProteusProject\HEX\</OutputDirectory>
+          <OutputName>AT89C52</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>

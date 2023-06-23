@@ -3,5 +3,7 @@ Listings/
 Objects/
 ProteusProject/Project Backups
 ProteusProject/*.workspace
+ProteusProject/HEX/*
+!ProteusProject/HEX/*.hex
 *.uvgui.*
 *.code-workspace
