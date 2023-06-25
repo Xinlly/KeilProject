@@ -25,7 +25,8 @@ void increPIDCalculate(float32 targetValue_Abs, float32 currentValue_Abs)
         deltaUi = Ki * error;
         deltaUd = Kd * (error - 2 * error_old[0] + error_old[1]);
         deltaUcontrol = deltaUp + deltaUi + deltaUd;
-        Ucontrol += abs(error) < deltaErrorMax ? 0 :  deltaUcontrol;
+        // Ucontrol += abs(error) < deltaErrorMax ? 0 :  deltaUcontrol;
+        Ucontrol += deltaUcontrol;
         if (Ucontrol < 0)
         {
             Ucontrol = 0;
