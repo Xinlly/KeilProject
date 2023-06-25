@@ -85,11 +85,5 @@ void main()
             setLedOut_int(targetRPM, 4, 4);
             setLedOut_int(sign_taegetRPM * getRPM() + 0.5, 0, 4);
         }
-        /* if (getSysTime_ms() - timeMarkRefreshLED_ms >= 360)
-        {
-            timeMarkRefreshLED_ms = getSysTime_ms();
-            setLedOut_int(targetRPM, 4, 4);
-            setLedOut_int(sign_taegetRPM * getRPM() + 0.5, 0, 4);
-        } */
     }
 }
