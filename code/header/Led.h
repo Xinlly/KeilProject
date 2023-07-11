@@ -23,7 +23,7 @@ typedef struct struct_Led_segData_table
     uint8 P;    //"P"
     uint8 o;    //"o"
 } Led_segData_table;
-extern Led_segData_table led_segData_table;
+extern Led_segData_table led_segDataA_table;
 
 void initLedSegData();
 uint8 uint8ToSeg(uint8 uint8Data);

@@ -87,3 +87,12 @@ void main()
         }
     }
 }
+/* void main()
+{
+    init();
+    setLedOut_int(10, 0, 2);
+    while (1)
+    {
+        ;
+    }
+} */

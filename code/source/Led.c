@@ -9,7 +9,8 @@
 #include "ABSACC.H"
 
 uint8 led_bitIndex;
-uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+uint8 led_segData[led_bitCount];
+// uint8 led_segData[led_bitCount] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 uint8 led_bitIndex_table[] = {
     bin(00000001),
     bin(00000010),
@@ -20,7 +21,7 @@ uint8 led_bitIndex_table[] = {
     bin(01000000),
     bin(10000000) //
 };
-Led_segData_table led_segData_table = {
+/* Led_segData_table led_segData_table = {
     {
         0xC0, //"0"
         0xF9, //"1"
@@ -40,11 +41,43 @@ Led_segData_table led_segData_table = {
         0x8E  //"F"
     },
     0 //
+}; */
+Led_segData_table led_segData_table = {
+    {
+        0x3F, //"0"
+        0x06, //"1"
+        0x5B, //"2"
+        0x4F, //"3"
+        0x66, //"4"
+        0x6D, //"5"
+        0x7D, //"6"
+        0x07, //"7"
+        0x7F, //"8"
+        0x6F, //"9"
+        0x77, //"A"
+        0x7C, //"B"
+        0x39, //"C"
+        0x5E, //"D"
+        0x79, //"E"
+        0x71  //"F"
+    },
+    0 //
 };
-void initLedSegData()
+/* void initLedSegData()
 {
     led_segData_table.line = 0xBF; //"-"
     led_segData_table.off = 0xFF;  // 熄灭
+    led_segData_table.H = 0x76;    //"H"
+    led_segData_table.L = 0x38;    //"L"
+    led_segData_table.n = 0x37;    //"n"
+    led_segData_table.u = 0x3E;    //"u"
+    led_segData_table.P = 0x73;    //"P"
+    led_segData_table.o = 0x5C;    //"o"
+} */
+void initLedSegData()
+{
+    led_segData_table.line = 0x40; //"-"
+    led_segData_table.off = 0x00;  // 熄灭
     led_segData_table.H = 0x76;    //"H"
     led_segData_table.L = 0x38;    //"L"
     led_segData_table.n = 0x37;    //"n"
@@ -98,8 +131,8 @@ uint8 uint8ToSeg(uint8 unit8Data)
 void ledDisplay(uint8 displayData, uint8 led_bitIndex)
 {
     led_segPort = led_segData_table.off;
-    led_bitPort = led_bitIndex_table[led_bitIndex];
-    led_segPort = 0xFF;
+    led_bitPort = led_bitIndex; // led_bitIndex_table[led_bitIndex];
+    led_segPort = led_segData_table.off;
     led_segPort = displayData;
 }
 
@@ -112,7 +145,7 @@ void setLedOut_int(int32 dispalyData, uint8 bitIndex, uint8 bitCount)
         led_segData[tempIndex] = uint8ToSeg(tempData % 10);
         tempData /= 10;
     }
-    led_segData[tempIndex] = dispalyData < 0 ? led_segData_table.line : (tempData !=0 ? uint8ToSeg(tempData % 10) : led_segData_table.off);
+    led_segData[tempIndex] = dispalyData < 0 ? led_segData_table.line : (tempData != 0 ? uint8ToSeg(tempData % 10) : led_segData_table.off);
 }
 
 void ledDisplayTask()
@@ -121,7 +154,7 @@ void ledDisplayTask()
     /* led_selectSeg_enable = 1;
     led_selectSeg_enable = 0; */
 
-    led_bitPort = led_bitIndex_table[led_bitIndex];
+    led_bitPort = led_bitIndex; // led_bitIndex_table[led_bitIndex];
     /* led_selectBit_enable = 1;
     led_selectBit_enable = 0; */
 
