@@ -6,6 +6,7 @@
 #include "ExInterrupt.h"
 #include "Led.h"
 #include "8255A.h"
+#include "KeyPad.h"
 
 #include "REG51.H"
 #include "INTRINS.H"
@@ -69,7 +70,7 @@ void init()
     EA = 1;
 }
 
-void main()
+/* void main()
 {
     static uint32 timeMarkCalculate_ms;
     // static uint32 timeMarkRefreshLED_ms;
@@ -86,13 +87,19 @@ void main()
             setLedOut_int(sign_taegetRPM * getRPM() + 0.5, 0, 4);
         }
     }
-}
-/* void main()
+} */
+void main()
 {
+    // static uint32 timeMarkCalculate_ms;
     init();
-    setLedOut_int(10, 0, 2);
+    // scanLine(0);
+    keypadPort = 17;
     while (1)
     {
-        ;
+        /* if (getSysTime_ms() - timeMarkCalculate_ms >= pulseSamplesCycle_ms - 1)
+        {
+            timeMarkCalculate_ms = getSysTime_ms();
+            keypadScanTask();
+        } */
     }
-} */
+}
