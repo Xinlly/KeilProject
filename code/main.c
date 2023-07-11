@@ -57,7 +57,7 @@ void init()
     // gain_pulsesToRPM = 60000 / pulsesPerRevolution / pulseSamplesCycle_ms
     setGain_pulsesToRPM(3);
     // setPIDValue((maxUc_Abs-minUc_Abs)/(maxUd_Abs-minUd_Abs)/8, Kp/2, Kp*0.1);
-    setPIDValue(0.052917, 0.029398, 0.026458);
+    setPIDValue(0.211667, 0.117592, 0.105833);
     initLedSegData();
     initExInterrupt();
     initTimer0();
